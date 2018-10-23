@@ -16,14 +16,14 @@ void insert(int x)                //function to insert node in the list
     head=temp;
 
 }
-void print(node *p)                       //function to print the values in the list
+void print(node *p)                //function to print the values in the list
 {
-    if(p == NULL)
+    if(p == NULL)                  //Terminating step
     {
         return;
     }
     cout<<p->data<<" ";
-    print(p->next);
+    print(p->next);               //Recursively call
 }
 
 int main()
