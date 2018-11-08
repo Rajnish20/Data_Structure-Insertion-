@@ -16,23 +16,31 @@ void insert(int x)                //function to insert node in the list
     head=temp;
 
 }
-void print1(node *p1)                //function to print the values in the list
+void print()                       //function to print the values in the list
 {
-    if(p1 == NULL)                  //Terminating step
+    node * temp=head;
+    cout<<"List is :";
+    while(temp!=NULL)
     {
-        return;
+        cout<<temp->data<<" ";
+        temp=temp->next;
     }
-    cout<<p1->data<<" ";
-    print1(p1->next);     //Recursively call
+    cout<<endl;
 }
-void print(node *p)                //function to print the values in the list
+
+void reverse_print(node *p)    //Function to reverse the list
 {
-    if(p == NULL)                  //Terminating step
+    if(p->next == NULL)
     {
+        head = p;
         return;
     }
-    print(p->next);     //Recursively call
-    cout<<p->data<<" ";
+    reverse_print(p-> next);
+    node *q = p->next;
+    q->next = p;
+    p->next = NULL;
+
+
 }
 
 int main()
@@ -46,10 +54,10 @@ int main()
         cin>>x;
         insert(x);
 
-    }
-    print1(head);
-    cout<<endl;
-    cout<<"Printing the element of list in reverse order"<<endl;
-    print(head);
+        }
+    print();
+        reverse_print(head);
+        cout<<"After the reversing the linked list "<<endl;
+        print();
         return 0;
 }
